@@ -1,0 +1,35 @@
+{% extends 'Base.html' %}
+{% block title %}
+Display Category
+{% endblock %}
+{% block content %}
+
+   <div class="container">
+       <div class="row justify-content-center mt-3">
+           <div class="col-md-12">
+               <h4>Blogs</h4>
+               {% if blog %}
+                 {% for i in blog %}
+                  <div class="blog-box mt-5">
+                      <a href="/detail_blog/{{ i.id }}/" class="item-link">{{ i.title }}</a>
+                      <br>
+                      <small>Category : {{ i.category.category }}</small>
+                      <br>
+                      <small>Created By: {{ i.writer.username }}</small>
+                      <br>
+                      <small>Created_at: {{ i.created_date }} </small>
+                      <br>
+                      {% if session['username'] == i.writer.username %}
+                        <a href="/edit_blog/{{ i.id }}/" class="btn btn-outline-info">Edit</a>
+                        <a href="/delete_blog/{{ i.id }}/" class="btn btn-outline-danger">Delete</a>
+                      {% endif %}
+                  </div>
+                 {% endfor %}
+               {% endif %}
+
+           </div>
+       </div>
+   </div>
+
+
+{% endblock %}

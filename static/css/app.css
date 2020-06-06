@@ -1,0 +1,21 @@
+.blog-box {
+  background-color: #D2D5D7;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.comment-box {
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  background-color: #EEF1F2;
+}
+
+.image-box {
+  height: 200px;
+  width: 200px;
+  border: 1px solid grey;
+  padding: 5px;
+  border-radius: 5px;
+}

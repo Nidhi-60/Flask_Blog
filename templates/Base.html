@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='logo/1.png') }}">
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <title>
+        {% block title %}
+        {% endblock %}  |  BLOG APP
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    {% include 'includes/__bootstrap.html' %}
+</head>
+<body>
+    {% include 'includes/__navbar.html' %}
+    {% include 'includes/__message.html' %}
+
+    {% block content %}
+
+
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+ <script>
+        CKEDITOR.replace( 'txtarea' );
+    </script>
+</body>
+</html>

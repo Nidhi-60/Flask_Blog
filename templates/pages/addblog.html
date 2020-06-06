@@ -1,0 +1,30 @@
+{% extends 'Base.html' %}
+{% block title %}
+Add Blog
+{% endblock %}
+{% block content %}
+
+   <div class="container">
+       <div class="row justify-content-center mt-3">
+           <div>
+               <h5>Add Blog</h5>
+               <form method="post" class="form-group" action="" enctype="multipart/form-data">
+                   {% if form.errors %}
+                     {% for i in form.errors %}
+                   <div class="alert alert-danger">{{ i }}</div>
+                     {% endfor %}
+                   {% endif %}
+                 {% for i in form %}
+                   <div>
+                       {{ i.label }}
+                       {{ i(class='form-control') }}
+                   </div>
+                   {% endfor %}
+                   <input type="submit" value="Add Blog" class="btn btn-outline-dark mt-4">
+               </form>
+           </div>
+       </div>
+   </div>
+
+
+{% endblock %}

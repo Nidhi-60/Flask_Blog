@@ -1,0 +1,30 @@
+{% extends 'Base.html' %}
+{% block title %}
+Display Category
+{% endblock %}
+{% block content %}
+
+   <div class="container">
+       <div class="row justify-content-center mt-3">
+           <div>
+               <h5>Category Of Blog</h5>
+               {% if category %}
+                 {% for i in category %}
+                  <div class="blog-box mb-4">
+                      <a href="/category_blog/{{ i.id }}/">{{ i.category }}</a>
+                      {% if session['username'] == i.category_writer.username %}
+                        <a href="/delete_category/{{ i.id }}/" class="btn btn-outline-danger ml-5">Delete</a>
+                      {% endif %}
+                  </div>
+                 {% endfor %}
+               {% endif %}
+
+           </div>
+       </div>
+   </div>
+
+
+{% endblock %}
+
+
+

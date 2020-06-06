@@ -1,0 +1,82 @@
+{% extends 'Base.html' %}
+{% block title %}
+Display Category
+{% endblock %}
+{% block content %}
+
+   <div class="container">
+       <div class="row justify-content-center mt-3">
+            <h4>Blogs</h4>
+           <div class="col-md-12 blog-box">
+               {% if blog %}
+
+                <div>
+                    <h4>{{ blog.title }}</h4>
+                     <hr>
+                    <img src="{{ url_for('static', filename='image/uploaded/'+blog['image']) }}" class="image-box"
+                         align="center">
+                    <br>
+                    <p>{{ blog.body }}</p>
+                    <small>created_by : {{ blog.writer.username }}</small>
+                    <br>
+                    <small>created_at: {{ blog.created_date }}</small>
+                    <br><br>
+                    {% if session['username'] == blog.writer.username %}
+                        <a href="/edit_blog/{{ blog.id }}/" class="btn btn-outline-info">Edit</a>
+                        <a href="/delete_blog/{{ blog.id }}/" class="btn btn-outline-danger">Delete</a>
+                      {% endif %}
+                </div>
+
+               {% endif %}
+           </div>
+       </div>
+   </div>
+
+   <hr>
+
+  <div class="container">
+      <div class="row">
+         <h3>Add Comments</h3>
+      </div>
+
+      <hr>
+      <div class="row mt-3 mb-3">
+           <div>
+             <form class="form-group" method="post" action="">
+                 <div>
+                      <label>Comment: </label>
+                      <textarea name="txtcomment" id="txtarea"></textarea>
+                 </div>
+                 <div class="mt-5 mb-4">
+                     <input type="submit" value="Add Comment" class="btn btn-outline-dark">
+                 </div>
+          </form>
+          </div>
+      </div>
+      <hr>
+      <div class="row">
+         <h4>Comments: </h4>
+      </div>
+      <hr>
+      <div class="row mt-3 mb-5">
+          {% if comment %}
+          {% for i in comment %}
+             <div class="comment-box">
+                 <h6>{{ i.comment }}</h6>
+                 <small>User: {{ i.comment_writer.username }}</small>
+                 {% if session['username'] == i.comment_writer.username %}
+                  <a href="/delete_comment/{{ i.id }}/" class="btn btn-outline-danger">Delete</a>
+                 {% endif %}
+             </div>
+          {% endfor %}
+          {% else %}
+             <div class="blog-box mt-4 mb-4">
+                 Be the First to Write comment.
+             </div>
+          {% endif %}
+      </div>
+  </div>
+
+
+
+{% endblock %}
