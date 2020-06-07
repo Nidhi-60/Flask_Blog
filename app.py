@@ -6,6 +6,7 @@ from wtforms import Form, StringField, PasswordField, validators, TextAreaField,
 app = Flask(__name__)
 app.config['IMAGE_UPLOADS'] = 'static/image/uploaded/'
 
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app2.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
